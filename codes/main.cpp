@@ -5,9 +5,11 @@
 #include <algorithm>
 #include <cstdlib>
 #include <cstring>
+#include <unistd.h>
 
 using namespace std;
 
+//chp 1
 int practice151();
 int practice152();
 int practice16GetNumber();
@@ -17,13 +19,16 @@ int practice18();
 bool fibonElement(int, int&);
 int operateFib();
 bool printSequence(int);
+//chp 2
+int operateFibPromote();
+
 
 int main() {
 //    exampleFunction();
 //    practice17();
 //    practice18();
 //    operateFib();
-    practice151();
+    operateFibPromote();
     return 0;
 }
 
@@ -202,5 +207,28 @@ bool printSequence(int pos){
     }
     cout << endl;
     return true;
+}
+
+// 2.1
+int operateFibPromote(){
+    while (true){
+        int pos;
+        cout << "Please enter a position: ";
+        cin >> pos;
+        if (pos == 0){
+            cout << "bye-bye";
+            break;
+        }
+        int elem;
+        if(fibonElement(pos, elem)){
+            cout << "element # " << pos << " is " << elem << endl;
+            printSequence(pos);
+        }
+        else{
+            cout << "Sorry, Could not calculate element #" << pos << endl;
+    }
+    }
+//    system("read");
+    return 0;
 }
 
