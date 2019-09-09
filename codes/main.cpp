@@ -232,5 +232,55 @@ int operateFibPromote(){
     return 0;
 }
 
+void print_msg(ostream &os, const string &msg){
+    if (msg.empty())
+        return;
+    os << msg;
+}
 
+void display(const vector<int> *vec){
+    if (! vec){
+        cout << "display(): the vector pointer is 0\n";
+        return;
+    }
+    for(int ix=0;ix< vec->size();ix++)
+        cout << (*vec)[ix] << ' ';
+    cout << endl;
+}
+
+void pointer_use(){
+    int ia[8] = {8, 32, 3, 13, 1, 21, 5, 2};
+    vector<int> vec(ia, ia+8);
+    cout << "vec is" ;
+    cout << "vector before sort: ";
+    display(&vec);
+}
+//pointer参数和reference参数之间更重要的差异是，pointer可能指向某个实际对象。当提及pointer时，一定要先确定其值
+//并非0，至于reference，则必定会代表某个对象，所以不需要做此检查。
+
+void swap(int &val1, int &val2){
+    int temp = val1;
+    val1 = val2;
+    val2 = temp;
+}
+
+void bubble_sort(vector<int> &vec, ofstream *ofil = 0){
+    for(int ix=0;ix<vec.size();++ix)
+        for(int jx=ix+1;jx<vec.size();++jx)
+            if(vec[ix]>vec[jx]){
+                if(!ofil){
+                    (*ofil) << "about to call swap! ix:" << ix
+                    << "jx: " << jx << "\tswapping: "
+                    << vec[ix] << "with "<< vec[jx]<<endl;
+                }
+//                swap(vec[ix], vec[jx],ofil)
+            }
+}
+//为了更高的可见性，讲默认值放在函数的声明处而非定义处
+
+//静态局部变量
+int fib_local_staic_object(){
+    static vector<int> elems;
+
+}
 
