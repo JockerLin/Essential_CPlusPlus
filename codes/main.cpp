@@ -21,16 +21,11 @@ int operateFib();
 bool printSequence(int);
 //chp 2
 int operateFibPromote();
-
-
-int main() {
-//    exampleFunction();
-//    practice17();
-//    practice18();
-//    operateFib();
-    operateFibPromote();
-    return 0;
-}
+void func();
+void static_fun_test();
+int* find(vector<int> &vec, int value);
+int findidx(vector<int> vec, int value);
+void test_find_map_value();
 
 int exampleFunction(){
     std::cout << "Hello, World!" << std::endl;
@@ -284,3 +279,95 @@ int fib_local_staic_object(){
 
 }
 
+void func(){
+    static int n = 10;
+//  静态局部变量
+    n ++;
+    cout<< "static variable n is:" << n << endl;
+}
+
+void static_fun_test(){
+//静态局部变量保存在全局数据区，而不是保存在栈中，每次的值保持到下一次调用，直到下次赋新值。
+//它始终驻留在全局数据区，直到程序运行结束。但其作用域为局部作用域，当定义它的函数或语句块结束时，其作用域随之结束
+    func();
+    func();
+    func();
+}
+
+//模板函数
+template <typename elemType>
+void display_message(const string &msg, const vector<elemType> &vec){
+//  希望推迟制定要显示的vector类型
+    cout << msg;
+    for(int ix=0;ix<vec.size();++ix){
+        elemType t = vec[ix];
+        cout << t << ' ';
+    }
+}
+
+void temp_func(){
+    vector<int> ivec;
+    string msg;
+    display_message(msg, ivec);
+
+    vector<string> svec;
+    string msg2;
+    display_message(msg2, svec);
+}
+
+template <typename elemType>
+elemType* find_temple(vector<elemType> &vec, elemType &value){
+    for(int ix=0;ix<vec.size();++ix)
+        if(vec[ix]==value)
+            return &vec[ix];
+    return 0;
+}
+
+void test_find_map_value(){
+    int map_value = 0;
+    int ia[8] = {8, 32, 3, 13, 1, 21, 5, 2};
+    vector<int> vec(ia, ia+8);
+    int *point, idx, *point2;
+    point = find(vec, 32);
+    idx = findidx(vec, 32);
+//    cout << find_temple(vec, 21);
+//    find_temple<int>(vec, 13);
+    cout << *point << idx;
+}
+
+int* find(vector<int> &vec, int value){
+    for(int ix=0;ix<vec.size();++ix)
+        if (vec[ix] == value)
+            return &vec[ix];
+    return 0;
+}
+
+int findidx(vector<int> vec, int value){
+    for(int ix=0;ix<vec.size();++ix)
+        if (vec[ix] == value)
+            return vec[ix];
+    return -1;
+}
+
+template <typename elemType>
+elemType* find(const elemType *first, const elemType *last, const elemType &value){
+    if (!first || !last)
+        return 0;
+
+    for(;first!=last;++first)
+        if(*first == value)
+            return first;
+    return 0;
+}
+
+
+int main() {
+//    exampleFunction();
+//    practice17();
+//    practice18();
+//    operateFib();
+//    operateFibPromote();
+//    static_fun_test();
+    test_find_map_value();
+    return 0;
+}
