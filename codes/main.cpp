@@ -9,7 +9,7 @@
 
 using namespace std;
 
-//chp 1
+//chapter 1
 int practice151();
 int practice152();
 int practice16GetNumber();
@@ -19,13 +19,35 @@ int practice18();
 bool fibonElement(int, int&);
 int operateFib();
 bool printSequence(int);
-//chp 2
+//chapter 2
 int operateFibPromote();
 void func();
 void static_fun_test();
 int* find(vector<int> &vec, int value);
 int findidx(vector<int> vec, int value);
 void test_find_map_value();
+void general_pentagonal(const int number, vector<int> &vec);
+void print_vector(vector<int> vec, const string &str);
+void test22();
+inline bool checkNum(const int number);
+void general_pentagonal2(const int num, vector<int> &vec);
+void test23();
+const vector<int>* pentagonalPoint(int num);
+void BackNum(int num);
+void test24();
+
+
+int main() {
+//    exampleFunction();
+//    practice17();
+//    practice18();
+//    operateFib();
+//    operateFibPromote();
+//    static_fun_test();
+//    test23();
+    test24();
+    return 0;
+}
 
 int exampleFunction(){
     std::cout << "Hello, World!" << std::endl;
@@ -315,6 +337,109 @@ void temp_func(){
     display_message(msg2, svec);
 }
 
+// test 22 begin-----------------------------------------------------------
+void general_pentagonal(const int number, vector<int> &vec){
+    if (number<=0 || number >=1024){
+        cout << "over: request number is not supported"<< endl;
+        return;
+    }
+    for (int i=1;i<=number;++i){
+        vec.push_back(i*(3*i-1)/2);
+    }
+}
+
+void print_vector(vector<int> vec, const string &str){
+    cout << "The Pentagonal squence is :";
+    for(int i=0;i<vec.size();++i){
+        cout<< vec[i] << ' ';
+
+    }
+	cout << "The type of vector is: " << str << endl;
+}
+
+void test22(){
+    int number;
+    vector<int> vec;
+    string str = "int";
+    cout << "please input a number:";
+    cin >> number;
+    general_pentagonal(number, vec);
+    if (number>=0 && number<1024){
+        print_vector(vec, str);
+    }
+}
+
+// test 2.2 end-----------------------------------------------------------
+
+// test 2.3 start-----------------------------------------------------------
+
+//内联函数
+//代码膨胀（复制）为代价，仅仅省去了函数调用的开销，从而提高函数的执行效率。
+inline bool checkNum(const int number){
+    cout << "number is" << number;
+    if (number<=0 || number >1024){
+        cout << "over: request number is not supported"<< endl;
+        return false;
+    }
+    return true;
+}
+
+void general_pentagonal2(const int num, vector<int> &vec){
+//
+    if (!checkNum)
+        return;
+    for (int i=1;i<=num;++i) {
+        vec.push_back(i * (3 * i - 1) / 2);
+    }
+}
+
+void test23(){
+    int number;
+    vector<int> vec;
+    string str = "int";
+    cout << "please input a number:";
+    cin >> number;
+    general_pentagonal2(number, vec);
+    if (number>=0 && number<1024){
+        print_vector(vec, str);
+    }
+}
+// test 2.3 end-----------------------------------------------------------
+
+// test 2.4 start-----------------------------------------------------------
+
+const vector<int>* pentagonalPoint(int num){
+    static vector<int> vec_static;
+    if(num <=0 && num > 1024){
+        cout << "over: request number is not supported"<< endl;
+        return 0;
+    }
+
+    for (int i=1;i<=num;++i) {
+        vec_static.push_back(i * (3 * i - 1) / 2);
+        cout << vec_static[i-1] << endl;
+    }
+    return &vec_static;
+}
+
+void BackNum(int num){
+    const vector<int> *vec = pentagonalPoint(num);
+    cout << "the value of this number in pentagonal sequence is :";
+    cout << (*vec)[num-1] << endl;
+}
+
+void test24(){
+    int number;
+    cout << "please input a number:";
+    cin >> number;
+    pentagonalPoint(number);
+    if (number>=0 && number<1024){
+            BackNum(number);
+        }
+}
+
+//重载函数与模板函数待添加
+
 template <typename elemType>
 elemType* find_temple(vector<elemType> &vec, elemType &value){
     for(int ix=0;ix<vec.size();++ix)
@@ -361,13 +486,3 @@ elemType* find(const elemType *first, const elemType *last, const elemType &valu
 }
 
 
-int main() {
-//    exampleFunction();
-//    practice17();
-//    practice18();
-//    operateFib();
-//    operateFibPromote();
-//    static_fun_test();
-    test_find_map_value();
-    return 0;
-}
