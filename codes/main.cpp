@@ -9,7 +9,7 @@
 
 using namespace std;
 
-//chapter 1
+//chapter 1 ----------------------------------------------------------------------
 int practice151();
 int practice152();
 int practice16GetNumber();
@@ -19,7 +19,7 @@ int practice18();
 bool fibonElement(int, int&);
 int operateFib();
 bool printSequence(int);
-//chapter 2
+//chapter 2 ----------------------------------------------------------------------
 int operateFibPromote();
 void func();
 void static_fun_test();
@@ -35,6 +35,7 @@ void test23();
 const vector<int>* pentagonalPoint(int num);
 void BackNum(int num);
 void test24();
+void testTrueFalse();
 
 
 int main() {
@@ -45,7 +46,8 @@ int main() {
 //    operateFibPromote();
 //    static_fun_test();
 //    test23();
-    test24();
+//    test24();
+//    testTrueFalse();
     return 0;
 }
 
@@ -376,17 +378,18 @@ void test22(){
 //内联函数
 //代码膨胀（复制）为代价，仅仅省去了函数调用的开销，从而提高函数的执行效率。
 inline bool checkNum(const int number){
-    cout << "number is" << number;
+    cout << "number is" << number << endl;
     if (number<=0 || number >1024){
         cout << "over: request number is not supported"<< endl;
         return false;
     }
+    cout << "over: request number is supported"<< endl;
     return true;
 }
 
 void general_pentagonal2(const int num, vector<int> &vec){
 //
-    if (!checkNum)
+    if (!checkNum(num))
         return;
     for (int i=1;i<=num;++i) {
         vec.push_back(i * (3 * i - 1) / 2);
@@ -474,15 +477,64 @@ int findidx(vector<int> vec, int value){
     return -1;
 }
 
+void testTrueFalse(){
+    bool a = true;
+    cout << "a is " << a;
+    cout << "!a is " << !a;
+
+}
+// chapter2 practices 带补全
+
+// chapter 3
+
+//传入数组与数组的某个value，返回该value的指针
+template <typename elemType>
+elemType* findOrigin(const elemType *array, int size, const elemType &value){
+    if(!array || size <1 )
+        return 0;
+    for(int ix=0;ix<size; ++ix, ++array){
+        if (*array == value)
+            return array;
+    return 0;
+    }
+}
+
 template <typename elemType>
 elemType* find(const elemType *first, const elemType *last, const elemType &value){
     if (!first || !last)
         return 0;
-
-    for(;first!=last;++first)
-        if(*first == value)
+//  当first不等于last,就把value和first所指的元素相比较
+//  如果两者相等，便返回first，否则将first递增1，令它指向下一个元素
+    for (;first != last; ++first)
+        if (*first == value)
             return first;
+
     return 0;
 }
 
+template <typename elemType>
+inline elemType* begin(const vector<elemType> &vec){
+    return vec.empty()? 0 : vec[0];
+}
 
+template <typename elemType>
+inline elemType* end(const vector<elemType> &vec){
+    return vec.empty()? 0 : vec[vec.size()-1];
+}
+
+//how to use:
+//find(begin(svec), end(svec), search_value)
+//只需要这一份，就可以同时实现array与list的寻找值功能
+
+template <typename IteratorType, typename elemType>
+IteratorType* findIterator(IteratorType first, IteratorType last, const elemType &value){
+    if (!first || !last)
+        return 0;
+//  当first不等于last,就把value和first所指的元素相比较
+//  如果两者相等，便返回first，否则将first递增1，令它指向下一个元素
+    for (;first != last; ++first)
+        if (*first == value)
+            return first;
+
+    return 0;
+}
