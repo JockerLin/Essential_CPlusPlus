@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <cstring>
 #include <unistd.h>
+#include "chp2/chp2.h"
+#include "chp3/chp3.h"
 
 using namespace std;
 
@@ -48,6 +50,9 @@ int main() {
 //    test23();
 //    test24();
 //    testTrueFalse();
+//    runP25();
+//    runP26();
+    chp33();
     return 0;
 }
 
@@ -537,4 +542,16 @@ IteratorType* findIterator(IteratorType first, IteratorType last, const elemType
             return first;
 
     return 0;
+}
+
+//设计一个泛型算法
+int count_occurs(const vector<int> &vec, int val){
+    vector<int>::const_iterator iter = vec.begin();
+    int occurs_count = 0;
+    while ((iter = find(iter, vec.end(), val)) != vec.end()){
+        ++occurs_count;
+        ++iter;
+
+    }
+    return occurs_count;
 }
