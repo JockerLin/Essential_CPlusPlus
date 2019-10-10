@@ -52,7 +52,7 @@ int main() {
 //    testTrueFalse();
 //    runP25();
 //    runP26();
-    chp33();
+    chp34();
     return 0;
 }
 

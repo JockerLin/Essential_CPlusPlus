@@ -9,5 +9,6 @@
 int chp31();
 int chp32();
 int chp33();
+int chp34();
 
 #endif //CODES_CHP3_H

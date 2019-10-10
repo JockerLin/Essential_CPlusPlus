@@ -15,6 +15,7 @@
 
 using namespace std;
 
+//定义一个map， 以名字为key,value则是年龄。输入姓名，输入年龄。
 int chp33(){
     map<string, string> dic;
     string str1, str2;
@@ -30,10 +31,10 @@ int chp33(){
         dic[str1]=str2;
     }
     string search;
-    cout << "Which family name does you want to search:  ";
+    cout << "Which name do you want to search:  ";
 	cin >> search;
 	if(dic.find(search)!=dic.end())
-	    cout << "The children name in this family is: " << dic[search] << endl;
+	    cout << "The age is: " << dic[search] << endl;
 	else
 	    cout << "the name doesn't exist";
 
