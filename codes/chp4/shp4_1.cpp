@@ -105,6 +105,7 @@ private:
     static const int _max_elems = 1024;
 };
 
+//静态变量使用之前必须初始化
 vector<int> Triangular::_elems;
 
 //静态成员函数
@@ -159,15 +160,29 @@ void testIsElemsDependence(void){
 
 class Triangular_iterator{
 //当前类维护一个索引值 用以索引Triangular中储存数列元素的static data member 即_element,
+//为了达成该目的 Triangular必须赋予Triangular_iterator的member function特殊的访问权限
+//通过使用friend机制给予这种特殊权限
 public:
+    typedef Triangular_iterator iterator;
+    Triangular_iterator begin() const {
+        return Triangular_iterator(_begin_pos);
+    }
+
+    Triangular_iterator end() const {
+        return Triangular_iterator(_begin_pos+_length);
+    }
+
     Triangular_iterator(int index) : _index(index-1){}
+    //为此class定义==与!=运算符的具体实现
     bool operator==(const Triangular_iterator&) const;
     bool operator!=(const Triangular_iterator&) const;
     int operator*() const;
-    Triangular_iterator&    operator++();
-    Triangular_iterator operator++(int);
+    Triangular_iterator&    operator++();//prefix ++x
+    Triangular_iterator operator++(int);//postfix x++
 
 private:
+    int _begin_pos;
+    int _length;
     void check_integrity() const;
     int _index;
 };
@@ -180,7 +195,26 @@ inline bool Triangular_iterator::operator!=(const Triangular_iterator &rhs) cons
     return !(*this == rhs);
 }
 
-//inline int Triangular_iterator::operator*() const {
-//    check_integrity();
-//    return Triangular::_elems[_index]
+inline int Triangular_iterator::operator*() const {
+    check_integrity();
+    return Triangular::getElems()[_index];
+}
+
+//inline void Triangular_iterator::check_integrity() const {
+//    if (_index >= Triangular::_max_elems)
+//        throw iterator_overflow();
 //}
+
+inline Triangular_iterator& Triangular_iterator::operator++() {
+    ++_index;
+    check_integrity();
+    return *this;
+}
+
+inline Triangular_iterator Triangular_iterator::operator++(int) {
+    Triangular_iterator tmp = *this;
+    ++_index;
+    check_integrity();
+    return tmp;
+}
+

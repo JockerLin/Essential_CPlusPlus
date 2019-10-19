@@ -56,8 +56,9 @@ int main() {
 //    runP26();
 //    chp34();
 //    testLineClass();
-    test_static_func();
-    testIsElemsDependence();
+//    test_static_func();
+//    testIsElemsDependence();
+    testChp45();
     return 0;
 }
 
