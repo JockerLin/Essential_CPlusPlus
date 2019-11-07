@@ -10,6 +10,7 @@
 #include "chp2/chp2.h"
 #include "chp3/chp3.h"
 #include "chp4/chp4.h"
+#include "chp5/chp5.h"
 
 using namespace std;
 
@@ -58,7 +59,7 @@ int main() {
 //    testLineClass();
 //    test_static_func();
 //    testIsElemsDependence();
-    testChp45();
+    virtualFunction();
     return 0;
 }
 
