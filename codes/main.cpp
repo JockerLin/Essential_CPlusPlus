@@ -59,7 +59,8 @@ int main() {
 //    testLineClass();
 //    test_static_func();
 //    testIsElemsDependence();
-    virtualFunction();
+//    virtualFunction();
+    operateStack();
     return 0;
 }
 
