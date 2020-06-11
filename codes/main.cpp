@@ -11,6 +11,7 @@
 #include "chp3/chp3.h"
 #include "chp4/chp4.h"
 #include "chp5/chp5.h"
+#include "classdemo/pointclass.h"
 
 using namespace std;
 
@@ -41,6 +42,7 @@ const vector<int>* pentagonalPoint(int num);
 void BackNum(int num);
 void test24();
 void testTrueFalse();
+Point CalculatePoint();
 
 
 int main() {
@@ -60,7 +62,12 @@ int main() {
 //    test_static_func();
 //    testIsElemsDependence();
 //    virtualFunction();
-    operateStack();
+//    operateStack();
+//    CalculatePoint();
+//    PP.setPoint(98, 32);
+//    PP.printPoint();
+//    operateStack();
+    practice17();
     return 0;
 }
 

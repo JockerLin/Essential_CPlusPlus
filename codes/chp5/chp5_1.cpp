@@ -13,11 +13,24 @@ using namespace std;
 
 // int*与 *int 区别
 
+//----------------LIFO_Stack----------------------
+
 ostream& operator<<(ostream& os, const StackAbstract &rhs)
 {
 	return rhs.print(os);
 }
 
+ostream& LIFO_Stack::print(ostream& os) const
+{
+    vector<string>::const_reverse_iterator //反向迭代器，针对vector.rbegin()和vector.rend()
+            rit = _stack.rbegin(),   //指向第一个元素前一个位置
+            rend = _stack.rend();    //指向最后一个元素
+    os << "\n\t";
+    while (rit != rend)
+        os << *rit++ << "\n\t";
+    os << endl;
+    return os;
+}
 
 bool LIFO_Stack::pop(string& elem)
 {
@@ -37,18 +50,8 @@ bool LIFO_Stack::push(const string& elem)
 	return true;
 }
 
-ostream& LIFO_Stack::print(ostream& os) const
-{
-	vector<string>::const_reverse_iterator //反向迭代器，针对vector.rbegin()和vector.rend()
-		rit = _stack.rbegin(),   //指向第一个元素前一个位置
-		rend = _stack.rend();    //指向最后一个元素
-	os << "\n\t";
-	while (rit != rend)
-		os << *rit++ << "\n\t";
-	os << endl;
-	return os;
-}
 
+//----------------Peekback_Stack----------------------
 
 
 bool Peekback_Stack::pop(string& elem)
@@ -101,27 +104,31 @@ void peek(StackAbstract& st, int index){
 
 int operateStack()
 {
-	LIFO_Stack st;
+    Peekback_Stack st;
 	string str="qwe";
 ////	while (cin >> str && !st.full())
     st.push(str);
     st.push("123");
     st.push("hjkhjk");
+    string temp_str;
+    st.peek(1, temp_str);
+    cout << temp_str << endl;
+    cout << st;
 //	cout << '\n' << "About to call peek() with LIFO_Stack" << endl;
 //	cout<<"st.top() - 1:"<<st.top() - 1<<endl;
 //	peek(st, st.top() - 1);
 //	cout << st;
 
-	Peekback_Stack pst;
-	while (!st.empty())
-	{
-		string t;
-		if (st.pop(t))
-			pst.push(t);
-	}
-	cout << "About to call peek() with Peekback_Stack" << endl;
-	peek(pst, pst.top() - 1);
-	cout << pst;
+//	Peekback_Stack pst;
+//	while (!st.empty())
+//	{
+//		string t;
+//		if (st.pop(t))
+//			pst.push(t);
+//	}
+//	cout << "About to call peek() with Peekback_Stack" << endl;
+//	peek(pst, pst.top() - 1);
+//	cout << pst;
 
 	return 0;
 }

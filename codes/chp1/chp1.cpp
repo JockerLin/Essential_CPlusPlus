@@ -72,8 +72,8 @@ int practice16GetNumber(){
 }
 
 int practice17(){
-    string input_file_path = "/home/pilcq/personal/C-Project/Code/test.txt";
-    string output_file_path = "/home/pilcq/personal/C-Project/Code/output.txt";
+    string input_file_path = "/home/pilcq/person/ownproject/essential-c/codes/chp1/test.txt";
+    string output_file_path = "/home/pilcq/person/ownproject/essential-c/codes/chp1/output.txt";
 
     vector<string> words;
     ifstream infile(input_file_path, ios_base::in);

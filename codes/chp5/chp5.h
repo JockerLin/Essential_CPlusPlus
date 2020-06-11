@@ -11,6 +11,9 @@
 
 using namespace std;
 
+// 纯虚函数 子类一定要重写
+// 虚函数 子类可不重写则用父类函数
+
 class StackAbstract{
 public:
 	virtual ~StackAbstract(){}
@@ -34,12 +37,12 @@ public:
 		if (capacity)
 			_stack.reserve(capacity);
 	}
-	int size() const { return _stack.size(); }
+	// 类中函数的常量 常量成员函数
+	int size() const { return _stack.size(); }  // 意义上是不能修改所在类的的任何变量。
 	bool empty() const{ return !_top; }
 	bool full() const{ return size() >= _stack.max_size(); }
 	int top() const{ return _top; }
 	ostream& print(ostream&) const;
-
 	bool pop(string& elem);
 	bool push(const string& elem);
 	bool peek(int, string&) { return false; } //虽然这里peek函数没用，但基类里定义了此纯虚函数，这里必须申明定义
