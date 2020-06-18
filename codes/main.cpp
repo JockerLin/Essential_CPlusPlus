@@ -6,12 +6,12 @@
 #include <cstdlib>
 #include <cstring>
 #include <unistd.h>
-#include "chp1/chp1.h"
-#include "chp2/chp2.h"
-#include "chp3/chp3.h"
-#include "chp4/chp4.h"
-#include "chp5/chp5.h"
-#include "classdemo/pointclass.h"
+#include "book_practices/chp1/chp1.h"
+#include "book_practices/chp2/chp2.h"
+#include "book_practices/chp3/chp3.h"
+#include "book_practices/chp4/chp4.h"
+#include "book_practices/chp5/chp5.h"
+#include "book_practices/classdemo/pointclass.h"
 
 using namespace std;
 
@@ -76,6 +76,7 @@ int exampleFunction(){
     return 0;
 }
 
+// todo:不是所有的函数都转移到了所属的章节下，有些没时间整理，就先放在主函数里。
 
 // 2.1
 int operateFibPromote(){

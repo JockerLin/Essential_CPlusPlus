@@ -18,6 +18,7 @@ public:
         printf("A fun\n");
     }
 };
+
 class B : public A
 {
 public:
