@@ -44,8 +44,50 @@ void test24();
 void testTrueFalse();
 Point CalculatePoint();
 
+class animal{
+public:
+    animal(int height, int weight){
+        cout<<"animal construct"<<endl;
+    }
+};
+
+class fish: public animal{
+public:
+    fish(int a, int b):animal(a, b)
+    {
+        cout<<"fish construct"<<endl;
+    }
+};
+
+int checkRepeatNumber(){
+    int aa[]={4,2,1,3,3,4,4,1,2};
+    vector<int> test(aa,aa+9);
+
+    vector<int>::iterator it,it1;
+    for (it=++test.begin(); it != test.end();)
+    {
+        it1 = find(test.begin(),it,*it);    //若当前位置之前存在重复元素，删除当前元素,erase返回当前元素的下一个元素指针
+        if(it1 != it)
+            it=test.erase(it);
+        else
+            it++;
+    }
+    cout<<"result:"<<endl;
+    for (it=test.begin();it<test.end();it++)
+        cout<<*it;
+    cout<<endl;
+
+//    system("pause");
+    return 0;
+}
 
 int main() {
+    // animal ff(123, 456);
+    // 为什么不能用fish类型，如果不能在实例化的时候传递参数即
+    //checkRepeatNumber();
+    double ttttnum;
+    ttttnum = 1.98/(0);
+    cout<<ttttnum;
 //    exampleFunction();
 //    practice17();
 //    practice18();
@@ -67,9 +109,11 @@ int main() {
 //    PP.setPoint(98, 32);
 //    PP.printPoint();
 //    operateStack();
-    practice17();
+    //practice17();
+    cout<<"t"<<endl;
     return 0;
 }
+
 
 int exampleFunction(){
     std::cout << "Hello, World!" << std::endl;
@@ -204,7 +248,6 @@ void print_vector(vector<int> vec, const string &str){
     cout << "The Pentagonal squence is :";
     for(int i=0;i<vec.size();++i){
         cout<< vec[i] << ' ';
-
     }
 	cout << "The type of vector is: " << str << endl;
 }
