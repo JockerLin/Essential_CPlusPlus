@@ -81,38 +81,7 @@ int checkRepeatNumber(){
     return 0;
 }
 
-int main() {
-    // animal ff(123, 456);
-    // 为什么不能用fish类型，如果不能在实例化的时候传递参数即
-    //checkRepeatNumber();
-    double ttttnum;
-    ttttnum = 1.98/(0);
-    cout<<ttttnum;
-//    exampleFunction();
-//    practice17();
-//    practice18();
-//    operateFib();
-//    operateFibPromote();
-//    static_fun_test();
-//    test23();
-//    test24();
-//    testTrueFalse();
-//    runP25();
-//    runP26();
-//    chp34();
-//    testLineClass();
-//    test_static_func();
-//    testIsElemsDependence();
-//    virtualFunction();
-//    operateStack();
-//    CalculatePoint();
-//    PP.setPoint(98, 32);
-//    PP.printPoint();
-//    operateStack();
-    //practice17();
-    cout<<"t"<<endl;
-    return 0;
-}
+
 
 
 int exampleFunction(){
@@ -335,6 +304,55 @@ void test24(){
 }
 
 //重载函数与模板函数待添加
+// 2020 07 25----------------------------------------模板函数测试
+template<class T>
+void swapValue(T &x, T &y){
+    T temp=x;
+    x = y;
+    y = temp;
+}
+
+void demoSwapValueUseTemplate(){
+    int n=1, m=2;
+    swapValue(n, m);
+
+    double f=1.2,g=2.3;
+    swapValue(f, g);
+
+    cout << n << m<<endl;
+}
+
+// 以上模板函数相当于以下两个类型的函数
+// 交换两个整型变量的值的Swap函数：
+//void Swap(int & x,int & y)
+//{
+//    int tmp = x;
+//    x = y;
+//    y = tmp;
+//}
+// 交换两个double型变量的值的Swap函数:
+//void Swap(double & x,double & y)
+//{
+//    double tmp = x;
+//    x = y;
+//    y = tmp;
+//}
+
+// 求数组最大元素的MaxElement函数模板
+template <class T>
+T MaxElement(T a[], int size) // size是数组元素个数
+{
+    T tmpMax = a[0];
+    for(int i = 1;i < size;++i)
+    {
+        if(tmpMax < a[i])
+        {
+            tmpMax = a[i];
+        }
+    }
+    return tmpMax;
+}
+
 
 template <typename elemType>
 elemType* find_temple(vector<elemType> &vec, elemType &value){
@@ -442,4 +460,40 @@ int count_occurs(const vector<int> &vec, int val){
 
     }
     return occurs_count;
+}
+
+int main() {
+    // animal ff(123, 456);
+    // 为什么不能用fish类型，如果不能在实例化的时候传递参数即
+    //checkRepeatNumber();
+    double ttttnum;
+    ttttnum = 1.98/(0);
+    cout<<ttttnum;
+
+    //demoSwapValueUseTemplate();
+
+//    exampleFunction();
+//    practice17();
+//    practice18();
+//    operateFib();
+//    operateFibPromote();
+//    static_fun_test();
+//    test23();
+//    test24();
+//    testTrueFalse();
+//    runP25();
+//    runP26();
+//    chp34();
+//    testLineClass();
+//    test_static_func();
+//    testIsElemsDependence();
+    virtualFunction();
+//    operateStack();
+//    CalculatePoint();
+//    PP.setPoint(98, 32);
+//    PP.printPoint();
+//    operateStack();
+    //practice17();
+    cout<<"end code"<<endl;
+    return 0;
 }
