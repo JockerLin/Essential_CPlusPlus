@@ -59,15 +59,23 @@ void release(T op){
 template<class VariableType>
 class Relizase{
 public:
-    VariableType variable;
+    VariableType var;
 
+    // 结构体 返回结构体类型的函数怎么定义呢？
+    struct MyStruct{
+        bool status=false;
+        vector<int> img_pts;
+        int number2=3;
+    };
+
+    // 构造函数也有包含模板的类型
     Relizase(VariableType &vvv, int times){
 //        vvv.fun();
 //        vvv.foo();
-        this->variable = vvv;
-        this->variable.fun();
-        this->variable.foo();
-        cout << this->variable.pp<<endl;
+        this->var = vvv;
+        this->var.fun();
+        this->var.foo();
+        cout << this->var.pp<<endl;
 //
 //        this->variable = VariableType(vvv);
 //        this->variable.fun();
@@ -75,15 +83,52 @@ public:
 
         //cout<<"init func"<<endl;
     }
+    void printFunction();
+    //MyStruct structFunc();
+    void variableStructFunc(MyStruct &ms);
+
 };
+
+template<class TTT>
+void Relizase<TTT>::printFunction(){
+    cout << "this is a template function" << endl;
+}
+
+//template<class TTT>
+//Relizase<TTT>::MyStruct Relizase<TTT>::structFunc() {
+//    cout << "this is struction" << endl;
+//    MyStruct mm;
+//    mm.status = false;
+//    return mm;
+//}
+
+template<class TTT>
+void Relizase<TTT>::variableStructFunc(MyStruct &ms) {
+    cout << "template111" << endl;
+    ms.number2 += 10;
+}
+
+
+void demoTemFunction(){
+    A a;
+    Relizase<A> rel(a, 76);
+    rel.printFunction();
+    Relizase<A>::MyStruct mysy;
+    rel.variableStructFunc(mysy);
+    cout<<"my sy: " << mysy.number2<<endl;
+}
+
 
 int virtualFunction(void)
 {
-    A a;
-    B b;
-    Base base;
-    //release(a);
-    Relizase<B> par(b, 20);
+//    A a;
+//    B b;
+//    Base base;
+//    //release(a);
+//    Relizase<B> par(b, 20);
+
+    demoTemFunction();
+
 //    A *p = &a;
 //    p->foo();  //输出1
 //    p->fun();  //输出2

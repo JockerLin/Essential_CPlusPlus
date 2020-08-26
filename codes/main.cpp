@@ -26,21 +26,13 @@ using namespace std;
 //int operateFib();
 //bool printSequence(int);
 //chapter 2 ----------------------------------------------------------------------
-int operateFibPromote();
+
 void func();
 void static_fun_test();
 int* find(vector<int> &vec, int value);
 int findidx(vector<int> vec, int value);
 void test_find_map_value();
-void general_pentagonal(const int number, vector<int> &vec);
-void print_vector(vector<int> vec, const string &str);
-void test22();
-inline bool checkNum(const int number);
-void general_pentagonal2(const int num, vector<int> &vec);
-void test23();
-const vector<int>* pentagonalPoint(int num);
-void BackNum(int num);
-void test24();
+
 void testTrueFalse();
 Point CalculatePoint();
 
@@ -82,37 +74,12 @@ int checkRepeatNumber(){
 }
 
 
-
-
 int exampleFunction(){
     std::cout << "Hello, World!" << std::endl;
     return 0;
 }
 
 // todo:不是所有的函数都转移到了所属的章节下，有些没时间整理，就先放在主函数里。
-
-// 2.1
-int operateFibPromote(){
-    while (true){
-        int pos;
-        cout << "Please enter a position: ";
-        cin >> pos;
-        if (pos == 0){
-            cout << "bye-bye";
-            break;
-        }
-        int elem;
-        if(fibonElement(pos, elem)){
-            cout << "element # " << pos << " is " << elem << endl;
-            printSequence(pos);
-        }
-        else{
-            cout << "Sorry, Could not calculate element #" << pos << endl;
-    }
-    }
-//    system("read");
-    return 0;
-}
 
 void print_msg(ostream &os, const string &msg){
     if (msg.empty())
@@ -163,7 +130,6 @@ void bubble_sort(vector<int> &vec, ofstream *ofil = 0){
 //静态局部变量
 int fib_local_staic_object(){
     static vector<int> elems;
-
 }
 
 void func(){
@@ -202,106 +168,37 @@ void temp_func(){
     display_message(msg2, svec);
 }
 
-// test 22 begin-----------------------------------------------------------
-void general_pentagonal(const int number, vector<int> &vec){
-    if (number<=0 || number >=1024){
-        cout << "over: request number is not supported"<< endl;
-        return;
-    }
-    for (int i=1;i<=number;++i){
-        vec.push_back(i*(3*i-1)/2);
-    }
-}
-
-void print_vector(vector<int> vec, const string &str){
-    cout << "The Pentagonal squence is :";
-    for(int i=0;i<vec.size();++i){
-        cout<< vec[i] << ' ';
-    }
-	cout << "The type of vector is: " << str << endl;
-}
-
-void test22(){
-    int number;
-    vector<int> vec;
-    string str = "int";
-    cout << "please input a number:";
-    cin >> number;
-    general_pentagonal(number, vec);
-    if (number>=0 && number<1024){
-        print_vector(vec, str);
-    }
-}
-
-// test 2.2 end-----------------------------------------------------------
-
-// test 2.3 start-----------------------------------------------------------
-
-//内联函数
-//代码膨胀（复制）为代价，仅仅省去了函数调用的开销，从而提高函数的执行效率。
-inline bool checkNum(const int number){
-    cout << "number is" << number << endl;
-    if (number<=0 || number >1024){
-        cout << "over: request number is not supported"<< endl;
-        return false;
-    }
-    cout << "over: request number is supported"<< endl;
-    return true;
-}
-
-void general_pentagonal2(const int num, vector<int> &vec){
+//// test 2.4 start-----------------------------------------------------------
 //
-    if (!checkNum(num))
-        return;
-    for (int i=1;i<=num;++i) {
-        vec.push_back(i * (3 * i - 1) / 2);
-    }
-}
-
-void test23(){
-    int number;
-    vector<int> vec;
-    string str = "int";
-    cout << "please input a number:";
-    cin >> number;
-    general_pentagonal2(number, vec);
-    if (number>=0 && number<1024){
-        print_vector(vec, str);
-    }
-}
-// test 2.3 end-----------------------------------------------------------
-
-// test 2.4 start-----------------------------------------------------------
-
-const vector<int>* pentagonalPoint(int num){
-    static vector<int> vec_static;
-    if(num <=0 && num > 1024){
-        cout << "over: request number is not supported"<< endl;
-        return 0;
-    }
-
-    for (int i=1;i<=num;++i) {
-        vec_static.push_back(i * (3 * i - 1) / 2);
-        cout << vec_static[i-1] << endl;
-    }
-    return &vec_static;
-}
-
-void BackNum(int num){
-    const vector<int> *vec = pentagonalPoint(num);
-    cout << "the value of this number in pentagonal sequence is :";
-    cout << (*vec)[num-1] << endl;
-}
-
-void test24(){
-    int number;
-    cout << "please input a number:";
-    cin >> number;
-    pentagonalPoint(number);
-    if (number>=0 && number<1024){
-            BackNum(number);
-        }
-}
+//const vector<int>* pentagonalPoint(int num){
+//    static vector<int> vec_static;
+//    if(num <=0 || num > 1024){
+//        cout << "over: request number is not supported"<< endl;
+//        return 0;
+//    }
+//
+//    for (int i=1;i<=num;++i) {
+//        vec_static.push_back(i * (3 * i - 1) / 2);
+//        cout << vec_static[i-1] << endl;
+//    }
+//    return &vec_static;
+//}
+//
+//void BackNum(int num){
+//    const vector<int> *vec = pentagonalPoint(num);
+//    cout << "the value of this number in pentagonal sequence is :";
+//    cout << (*vec)[num-1] << endl;
+//}
+//
+//void test24(){
+//    int number;
+//    cout << "please input a number:";
+//    cin >> number;
+//    pentagonalPoint(number);
+//    if (number>=0 && number<1024){
+//            BackNum(number);
+//        }
+//}
 
 //重载函数与模板函数待添加
 // 2020 07 25----------------------------------------模板函数测试
@@ -462,12 +359,33 @@ int count_occurs(const vector<int> &vec, int val){
     return occurs_count;
 }
 
-int main() {
+int main(){
+    // chp1
+    //practice151();
+    //practice152();
+    //practice16GetNumber();
+    //practice17();
+    //practice18();
+    //operateFib();
+
+    // chp2
+    // operateFibPromote21();
+    // practice22();
+    // practice23();
+    // practice24();
+    // practice25();
+    // practice26();
+
+    // 2020-0826 chp1-2内容整理完
+
+}
+
+int main22() {
     // animal ff(123, 456);
     // 为什么不能用fish类型，如果不能在实例化的时候传递参数即
     //checkRepeatNumber();
     double ttttnum;
-    ttttnum = 1.98/(0);
+    ttttnum = 1.98/(0.2);
     cout<<ttttnum;
 
     //demoSwapValueUseTemplate();

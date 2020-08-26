@@ -12,4 +12,4 @@ add_executable(codes main.cpp swap.cpp
         book_practices/chp4/operate_reload.cpp book_practices/chp4/chp4_5.cpp book_practices/chp5/chp5.h
         book_practices/chp5/virtualfunc.cpp book_practices/chp5/chp5_1.cpp book_practices/classdemo/pointclass.cpp
         book_practices/classdemo/pointclass.h
-        book_practices/chp6/chp6.h book_practices/chp6/chp6_1.cpp)
+        book_practices/chp6/chp6.h book_practices/chp6/chp6_1.cpp book_practices/chp2/chp2.cpp)
