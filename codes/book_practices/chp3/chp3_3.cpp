@@ -31,12 +31,18 @@ int chp33(){
         dic[str1]=str2;
     }
     string search;
-    cout << "Which name do you want to search:  ";
-	cin >> search;
-	if(dic.find(search)!=dic.end())
-	    cout << "The age is: " << dic[search] << endl;
-	else
-	    cout << "the name doesn't exist";
+    while (true){
+        cout << "Which name do you want to search:  ";
+        cin >> search;
+        if(search=="q"){
+            cout << "finish look up"<<endl;
+            break;
+        }
+        else if(dic.find(search)!=dic.end())
+            cout << "The age is: " << dic[search] << endl;
+        else
+            cout << "the name doesn't exist\n";
+    }
 
     return 0;
 }

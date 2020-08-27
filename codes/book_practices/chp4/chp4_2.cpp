@@ -44,7 +44,7 @@ Stack::push(const string &elem)  //在栈顶增加元素
 	return true;
 }
 
-//Stack中实现fing 函数
+//Stack中实现find 函数
 bool
 Stack::find(const string &elem)
 {
@@ -58,7 +58,10 @@ Stack::count(const string &elem)
 	return std::count(_stack.begin(), _stack.end(), elem);
 }
 
-void testStack() {
+/*
+4.1 与 4.2 自定义Stack 且实现相同功能
+ * */
+void chp412TestStack() {
     Stack st;
     string str;
 
@@ -90,26 +93,33 @@ void testStack() {
 	    cout<<st.getStack()[i]<<endl;
 	}
 
-	//开始调用find和count函数
-	//cin.clear后，可以进行第二波输入。
-	cin.clear(); //***
-	string word;
-	cout << "Which word do you want search: ";
-	cin >> word;
-	if (st.find(word))
-	{
-		cout << "The word is in the stack,and it occurs " << st.count(word) << " times" << endl;
+	string search_str;
+    cin.clear(); //***
+    string word;
+    ;
+	while (cout << "Which word do you want search: " && cin>>word){
+	    if ("q"==word)
+            break;
+	    else{
+            //开始调用find和count函数
+            //cin.clear后，可以进行第二波输入。
+            cin.clear();
+
+            if (st.find(word))
+            {
+                cout << "The word is in the stack,and it occurs " << st.count(word) << " times" << endl;
+            }
+            else
+                cout << "Oops: this word not in the stack\n";
+
+            //将stack的元素取出打印，pop在取出的同时删除该元素
+//            cout<< "The strings, in reverse order: ";
+//            while (st.size())
+//                if (st.pop(str))
+//                    cout << str << ' ';
+
+            cout << '\n' << "There are now " << st.size()
+                 << " elements in the stack!\n";
+	    }
 	}
-	else
-		cout << "Oops: this word not in the stack\n";
-
-	//将stack的元素取出打印，pop在取出的同时删除该元素
-	cout<< "The strings, in reverse order: ";
-	while (st.size())
-        if (st.pop(str))
-            cout << str << ' ';
-
-	cout << '\n' << "There are now " << st.size()
-		<< " elements in the stack!\n";
-
 }

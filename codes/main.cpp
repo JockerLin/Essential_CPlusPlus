@@ -378,6 +378,15 @@ int main(){
 
     // 2020-0826 chp1-2内容整理完
 
+    //chp31();
+    //chp32();
+    //chp33();
+    //chp34();
+
+    //chp412TestStack();
+    //chp44Test();
+    chp45Test();
+
 }
 
 int main22() {

@@ -24,13 +24,17 @@ public:
         return s1.size()<s2.size();
     }
 };
-
+/*
+同chp31，增加将内容存储于vector，以字符串长度对vector排序，打印排序后的内容
+ * */
 int chp32(){
     cout<<"in chp31"<<endl;
     ifstream pin;
 //    pin.open("/home/pilcq/personal/essential-c/codes/chp3/test_data.txt", ios::in);
 //  文件路径要设置到与工程路径的同一级目录下才拿得到，假如为practice3_1.txt则读不到
     string file_path="../chp3/test_data.txt";
+    file_path="G:\\blazarlin\\personal\\essential-c\\codes\\book_practices\\chp3\\test_data.txt";
+
     ifstream InputFile(file_path);
     string str;
     int times=0;

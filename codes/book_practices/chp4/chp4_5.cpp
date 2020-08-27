@@ -143,7 +143,7 @@ void Matrix::operator+=(const Matrix &m)
 		    _matrix[ix][jx] += m(ix, jx);
 }
 
-int testChp45()
+int chp45Test()
 {
 	Matrix m;
 	cout << m << endl;

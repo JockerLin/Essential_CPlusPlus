@@ -88,6 +88,9 @@ int practice17(){
     string input_file_path = "G:\\blazarlin\\personal\\essential-c\\codes\\book_practices\\chp1\\test.txt";
     string output_file_path = "G:\\blazarlin\\personal\\essential-c\\codes\\book_practices\\chp1\\output.txt";
 
+    //string input_file_path = "../chp1/test.txt";
+    //string output_file_path = "../chp1/output.txt";
+
     vector<string> words;
     ifstream infile(input_file_path, ios_base::in);
     if (!infile){

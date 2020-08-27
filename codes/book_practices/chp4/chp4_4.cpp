@@ -21,6 +21,7 @@ using namespace std;
 //知识点：class定义（写数据cout，读取数据cin），构造函数初始化值，重载操作符operator，
 // 重载输入输出流 ostream& operator<< 和istream& operator>>，枚举变量定义enum， 类的private里的static数据成员需要初始化。。
 
+
 class UserProfile{
 public:
     enum ulevel {Beginner, Intermediate, Advanced, Guru};
@@ -158,7 +159,7 @@ istream& operator>>(istream &is, UserProfile &rhs)
 	return is;
 }
 
-int testChp44(){
+int chp44Test(){
 
     UserProfile measure1;
 	cout << measure1;
@@ -166,7 +167,7 @@ int testChp44(){
 	UserProfile measure2;
 	cout << measure2;
 
-	UserProfile measure3("Qing", UserProfile::Advanced);
+	UserProfile measure3("xiaoNong", UserProfile::Advanced);
 	cout << measure3;
 	measure3.bump_login_count();
 	measure3.bump_guess_count(28);
