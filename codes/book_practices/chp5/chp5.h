@@ -14,6 +14,11 @@ using namespace std;
 // 纯虚函数 子类一定要重写
 // 虚函数 子类可不重写则用父类函数
 
+/*
+实现一个双阶的stack(堆栈)类体系，其基类是个纯抽象类Stack，只提供最简单的接口:pop(),push(),size(),empty(),full(),peek(),print(),
+两个派生类为LIFO_Stack和Peekback_Stack, Peekback_Stack可以让用户在不更动stack元素的前提下，存取任何一个元素.
+ * */
+
 class StackAbstract{
 public:
 	virtual ~StackAbstract(){}
@@ -31,6 +36,7 @@ public:
 
 };
 
+//后进先出 last-in-first-out LIFO
 class LIFO_Stack:public StackAbstract{
 public:
 	LIFO_Stack(int capacity = 0) :_top(0){    //考虑周全一点，capacity容量

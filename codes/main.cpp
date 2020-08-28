@@ -11,6 +11,7 @@
 #include "book_practices/chp3/chp3.h"
 #include "book_practices/chp4/chp4.h"
 #include "book_practices/chp5/chp5.h"
+#include "book_practices/chp6/chp6.h"
 #include "book_practices/classdemo/pointclass.h"
 
 using namespace std;
@@ -376,7 +377,7 @@ int main(){
     // practice25();
     // practice26();
 
-    // 2020-0826 chp1-2内容整理完
+    // 2020-0826 chp1~2内容整理完
 
     //chp31();
     //chp32();
@@ -385,7 +386,11 @@ int main(){
 
     //chp412TestStack();
     //chp44Test();
-    chp45Test();
+    //chp45Test();
+
+    // 2020-0827 chp3~4内容
+
+    chp62Practices();
 
 }
 
